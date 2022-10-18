@@ -17,7 +17,7 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
-        <td><%= user.image %></td>
+        <td><%= image_tag user.image.url if user.image.present? %></td>
         <td><%= link_to '詳細', user %></td>
         <td><%= link_to '編集', edit_user_path(user) %></td>
         <td><%= link_to '削除', user, method: :delete, data: { confirm: '本当に削除する?' } %></td>
