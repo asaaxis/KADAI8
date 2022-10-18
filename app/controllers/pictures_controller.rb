@@ -25,6 +25,9 @@ class PicturesController < ApplicationController
   end
 
   def edit
+    unless @picture.user_id == current_user.id
+      redirect_to new_picture_path
+    end
   end
 
   
@@ -39,7 +42,9 @@ class PicturesController < ApplicationController
 
 
   def update
-    if @picture.update(picture_params)
+    if @picture.user_id != current_user.id
+      redirect_to new_picture_path
+    elsif @picture.update(picture_params)
       redirect_to picture_url(@picture), notice: "Picture was successfully updated." 
     else
       render :edit
@@ -48,8 +53,12 @@ class PicturesController < ApplicationController
 
 
   def destroy
-    @picture.destroy
-    redirect_to pictures_url, notice: "Picture was successfully destroyed." 
+    if @picture.user_id != current_user.id
+      redirect_to new_picture_path
+    else
+      @picture.destroy
+      redirect_to pictures_url, notice: "Picture was successfully destroyed." 
+    end
   end
 
   private

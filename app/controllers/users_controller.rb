@@ -14,6 +14,9 @@ class UsersController < ApplicationController
   end
 
   def edit
+    unless @user.id == current_user.id
+      redirect_to new_user_path
+    end
   end
 
   def create
@@ -26,7 +29,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
+    if @user.id != current_user.id
+      redirect_to new_user_path
+    elsif @user.update(user_params)
       redirect_to user_url(@user), notice: "編集しました." 
     else
       render :edit
@@ -34,8 +39,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
-  @user.destroy
-    redirect_to users_url, notice: "User was successfully destroyed." 
+    if @user.id != current_user.id
+      redirect_to new_user_path
+    else
+      @user.destroy
+      redirect_to users_url, notice: "User was successfully destroyed." 
+    end
   end
 
   private

@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Users</h1>
+<h1>ユーザー・一覧</h1>
 
 <table>
   <head>
     <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Image</th>
+      <th>名前</th>
+      <th>メール</th>
+      <th>画像</th>
       <th colspan="3"></th>
     </tr>
   </head>
@@ -19,8 +19,13 @@
         <td><%= user.email %></td>
         <td><%= image_tag user.image.url if user.image.present? %></td>
         <td><%= link_to '詳細', user %></td>
-        <td><%= link_to '編集', edit_user_path(user) %></td>
-        <td><%= link_to '削除', user, method: :delete, data: { confirm: '本当に削除する?' } %></td>
+        <% if user.id == current_user.id %>
+          <td><%= link_to '編集', edit_user_path(user) %></td>
+          <td><%= link_to '削除', user, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+        <% else %>
+          <td></td>
+          <td></td>
+        <% end %>
       </tr>
     <% end %>
   </body>
@@ -28,4 +33,4 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to '新規ユーザー', new_user_path %>
