@@ -21,8 +21,8 @@
   <% else %>
     <%= link_to 'お気に入り登録', favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-primary' %>
   <% end %>
-<% end %>
+<% end %> |
 
-<%= link_to 'お気に入り', favorites_path %> |
+
 <%= link_to 'Edit', edit_picture_path(@picture) %> |
 <%= link_to 'Back', pictures_path %>
