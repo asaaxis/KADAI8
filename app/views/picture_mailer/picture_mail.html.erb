@@ -2,6 +2,6 @@
 
 <p>name: <%= @picture.user.name %></p>
 
-<p>image: <%= image_tag @picture.image.url %></p>
+<p>image: <%= image_tag ("https://sleepy-cliffs-42793.herokuapp.com" + @picture.image.url) %></p>
 
 <p>content: <%= @picture.content %></p>
