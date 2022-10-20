@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to user_url(@user), notice: "User was successfully created." 
+      redirect_to user_url(@user), notice: "ユーザー登録しました." 
     else
       render :new
     end
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
       redirect_to new_user_path
     else
       @user.destroy
-      redirect_to users_url, notice: "User was successfully destroyed." 
+      redirect_to users_url, notice: "ユーザーを削除しました." 
     end
   end
 

@@ -1,7 +1,5 @@
 <h2>画像が投稿されました！</h2>
 
-<p>name: <%= @picture.user.name %></p>
+<p>名前: <%= @picture.user.name %></p>
 
-<p>image: <%= image_tag ("https://sleepy-cliffs-42793.herokuapp.com" + @picture.image.url) %></p>
-
-<p>content: <%= @picture.content %></p>
+<p>コメント: <%= @picture.content %></p>

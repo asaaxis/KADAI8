@@ -6,7 +6,6 @@
   <head>
     <tr>
       <th>名前</th>
-      <th>メール</th>
       <th>画像</th>
       <th colspan="3"></th>
     </tr>
@@ -16,7 +15,6 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.name %></td>
-        <td><%= user.email %></td>
         <td><%= image_tag user.image.url if user.image.present? %></td>
         <td><%= link_to '詳細', user %></td>
         <% if user.id == current_user.id %>
