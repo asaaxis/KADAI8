@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :favorites, only: [:create, :destroy, :index]
   resources :users
+  root 'users#new'
 
   resources :pictures do
     collection do
